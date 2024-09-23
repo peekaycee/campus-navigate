@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import './Graph.css'; 
+import React, { useState, useEffect } from 'react';
+import './Graph.css';
 
 type Graph = {
   [key: string]: { [key: string]: number };
 };
 
 const graph: Graph = {
-    'Front Gate': { 'Social Sciences': 2, 'Nithub': 3, 'Church': 5, 'Mosque': 4 },
-    'Social Sciences': { 'Front Gate': 2, 'Science': 1, 'Art': 4, 'Nithub': 2 },
-    'Nithub': { 'Front Gate': 3, 'Science': 2, 'Social Sciences': 2, 'Mosque': 3 },
-    'Science': { 'Social Sciences': 1, 'Nithub': 2, 'Faculty of Education': 5, 'Art': 2 },
-    'Art': { 'Social Sciences': 4, 'Faculty of Education': 3, 'Science': 2 },
-    'Church': { 'Front Gate': 5, 'Mosque': 3, 'Faculty of Education': 6 },
-    'Mosque': { 'Front Gate': 4, 'Nithub': 3, 'Church': 3, 'Faculty of Education': 5 },
-    'Faculty of Education': { 'Science': 5, 'Art': 3, 'Church': 6, 'Mosque': 5 },
-  };
+  'Front Gate': { 'Social Sciences': 2, 'Nithub': 3, 'Church': 5, 'Mosque': 4 },
+  'Social Sciences': { 'Front Gate': 2, 'Science': 1, 'Art': 4, 'Nithub': 2 },
+  'Nithub': { 'Front Gate': 3, 'Science': 2, 'Social Sciences': 2, 'Mosque': 3 },
+  'Science': { 'Social Sciences': 1, 'Nithub': 2, 'Faculty of Education': 5, 'Art': 2 },
+  'Art': { 'Social Sciences': 4, 'Faculty of Education': 3, 'Science': 2 },
+  'Church': { 'Front Gate': 5, 'Mosque': 3, 'Faculty of Education': 6 },
+  'Mosque': { 'Front Gate': 4, 'Nithub': 3, 'Church': 3, 'Faculty of Education': 5 },
+  'Faculty of Education': { 'Science': 5, 'Art': 3, 'Church': 6, 'Mosque': 5 },
+};
 
 const locations = Object.keys(graph);
 
@@ -87,9 +87,18 @@ const CampusNavigation: React.FC = () => {
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
+  // Load locations from localStorage when the component mounts
+  useEffect(() => {
+    const savedStart = localStorage.getItem('startLocation');
+    const savedEnd = localStorage.getItem('endLocation');
+    if (savedStart) setStart(savedStart);
+    if (savedEnd) setEnd(savedEnd);
+  }, []);
+
   const handleStartChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setStart(value);
+    localStorage.setItem('startLocation', value); // Save to localStorage
     setFilteredLocations(locations.filter(location => location.toLowerCase().includes(value.toLowerCase())));
     setShowDropdown(true);
   };
@@ -97,6 +106,7 @@ const CampusNavigation: React.FC = () => {
   const handleEndChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEnd(value);
+    localStorage.setItem('endLocation', value); // Save to localStorage
     setFilteredLocations(locations.filter(location => location.toLowerCase().includes(value.toLowerCase())));
     setShowDropdown(true);
   };
@@ -104,8 +114,10 @@ const CampusNavigation: React.FC = () => {
   const selectLocation = (location: string, isStart: boolean) => {
     if (isStart) {
       setStart(location);
+      localStorage.setItem('startLocation', location); // Save selected location
     } else {
       setEnd(location);
+      localStorage.setItem('endLocation', location); // Save selected location
     }
     setFilteredLocations([]);
     setShowDropdown(false);
