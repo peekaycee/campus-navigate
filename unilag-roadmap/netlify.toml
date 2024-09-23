@@ -1,5 +1,5 @@
 [build]
-  base = "."
+  base = "unilag-roadmap"
   publish = "dist"
   command = "npm run build"
 
