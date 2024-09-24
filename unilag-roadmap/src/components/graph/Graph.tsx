@@ -6,15 +6,136 @@ type Graph = {
   [key: string]: { [key: string]: number };
 };
 
+// const graph: Graph = {
+//   'Front Gate': { 'Social Sciences': 2, 'Nithub': 3, 'Church': 5, 'Mosque': 4 },
+//   'Social Sciences': { 'Front Gate': 2, 'Science': 1, 'Art': 4, 'Nithub': 2 },
+//   'Nithub': { 'Front Gate': 3, 'Science': 2, 'Social Sciences': 2, 'Mosque': 3 },
+//   'Science': { 'Social Sciences': 1, 'Nithub': 2, 'Faculty of Education': 5, 'Art': 2 },
+//   'Art': { 'Social Sciences': 4, 'Faculty of Education': 3, 'Science': 2 },
+//   'Church': { 'Front Gate': 5, 'Mosque': 3, 'Faculty of Education': 6 },
+//   'Mosque': { 'Front Gate': 4, 'Nithub': 3, 'Church': 3, 'Faculty of Education': 5 },
+//   'Faculty of Education': { 'Science': 5, 'Art': 3, 'Church': 6, 'Mosque': 5 },
+// };
+
 const graph: Graph = {
-  'Front Gate': { 'Social Sciences': 2, 'Nithub': 3, 'Church': 5, 'Mosque': 4 },
-  'Social Sciences': { 'Front Gate': 2, 'Science': 1, 'Art': 4, 'Nithub': 2 },
-  'Nithub': { 'Front Gate': 3, 'Science': 2, 'Social Sciences': 2, 'Mosque': 3 },
-  'Science': { 'Social Sciences': 1, 'Nithub': 2, 'Faculty of Education': 5, 'Art': 2 },
-  'Art': { 'Social Sciences': 4, 'Faculty of Education': 3, 'Science': 2 },
-  'Church': { 'Front Gate': 5, 'Mosque': 3, 'Faculty of Education': 6 },
-  'Mosque': { 'Front Gate': 4, 'Nithub': 3, 'Church': 3, 'Faculty of Education': 5 },
-  'Faculty of Education': { 'Science': 5, 'Art': 3, 'Church': 6, 'Mosque': 5 },
+  'First-Gate': { 
+    'Education': 5 
+  },
+  'Education': { 
+    'First-Gate': 5, 
+    'Elkanrmi': 4, 
+    'Environmental Science': 3 
+  },
+  'Elkanrmi': { 
+    'Education': 4, 
+    'Femi Gbajabiamila Hostel': 2, 
+    'Kofo Hall': 3 
+  },
+  'Femi Gbajabiamila Hostel': { 
+    'Elkanrmi': 2 
+  },
+  'Kofo Hall': { 
+    'Elkanrmi': 3, 
+    'Queen Amina Hall': 2 
+  },
+  'Queen Amina Hall': { 
+    'Kofo Hall': 2, 
+    'Biobaku Hostel': 2 
+  },
+  'Biobaku Hostel': { 
+    'Queen Amina Hall': 2, 
+    'Firstbank': 1 
+  },
+  'Firstbank': { 
+    'Biobaku Hostel': 1, 
+    'Cross-Junction': 1 
+  },
+  'Cross-Junction': { 
+    'Firstbank': 1, 
+    'Second-Gate': 4, 
+    'Medical Center': 2, 
+    'DLI': 2, 
+    'Iya Moria': 1, 
+    'Women Society': 1, 
+    'Honour\'s Hall': 2, 
+    'FSS Complex': 2 
+  },
+  'Second-Gate': { 
+    'Cross-Junction': 4, 
+    'Medical Center': 2 
+  },
+  'Medical Center': { 
+    'Cross-Junction': 2, 
+    'Access Bank': 2 
+  },
+  'DLI': { 
+    'Cross-Junction': 2, 
+    'Iya Moria': 1 
+  },
+  'Iya Moria': { 
+    'DLI': 1, 
+    'Women Society': 1 
+  },
+  'Women Society': { 
+    'Iya Moria': 1, 
+    'Honour\'s Hall': 2 
+  },
+  'Honour\'s Hall': { 
+    'Women Society': 2 
+  },
+  'FSS Complex': { 
+    'Cross-Junction': 2, 
+    'FSS': 1 
+  },
+  'FSS': { 
+    'FSS Complex': 1, 
+    'Nithub': 1 
+  },
+  'Nithub': { 
+    'FSS': 1, 
+    'Works': 1 
+  },
+  'Works': { 
+    'Nithub': 1, 
+    'T-Junction': 2 
+  },
+  'Environmental Science': { 
+    'Education': 3, 
+    'Sport Center': 2 
+  },
+  'Sport Center': { 
+    'Environmental Science': 2, 
+    'Church 1': 2 
+  },
+  'Church 1': { 
+    'Sport Center': 2, 
+    'Church 2': 1 
+  },
+  'Church 2': { 
+    'Church 1': 1, 
+    'Mosque': 1 
+  },
+  'Mosque': { 
+    'Church 2': 1, 
+    'Petro Station': 1 
+  },
+  'Petro Station': { 
+    'Mosque': 1, 
+    'T-Junction': 2 
+  },
+  'T-Junction': { 
+    'Works': 2, 
+    'Petro Station': 2, 
+    'Access Bank': 2 
+  },
+  'Access Bank': { 
+    'T-Junction': 2, 
+    'New Hall': 3 
+  },
+  'New Hall': { 
+    'Access Bank': 3, 
+    'Medical Center': 4 
+  }
 };
 
 const locations = Object.keys(graph);
