@@ -195,8 +195,8 @@ const printShortestPaths = (
 };
 
 const CampusNavigation: React.FC = () => {
-  const [start, setStart] = useState<string>('');
-  const [end, setEnd] = useState<string>('');
+  const [start, setStart] = useState<string>('Front Gate');
+  const [end, setEnd] = useState<string>('Social Sciences');
   const [result, setResult] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
@@ -220,7 +220,7 @@ const CampusNavigation: React.FC = () => {
         location.toLowerCase().includes(value.toLowerCase())
       )
     );
-    setShowStartDropdown(true);
+    setShowStartDropdown(value.trim() !== ''); // Show dropdown only if input is not empty
     setShowEndDropdown(false); // Hide end dropdown
   };
 
@@ -233,7 +233,7 @@ const CampusNavigation: React.FC = () => {
         location.toLowerCase().includes(value.toLowerCase())
       )
     );
-    setShowEndDropdown(true);
+    setShowEndDropdown(value.trim() !== ''); // Show dropdown only if input is not empty
     setShowStartDropdown(false); // Hide start dropdown
   };
 
@@ -266,7 +266,7 @@ const CampusNavigation: React.FC = () => {
         <label>
           Starting Location:
           <input
-            placeholder='Type in where you are now'
+            placeholder='Type in where are you now'
             type='text'
             value={start}
             onChange={handleStartChange}
@@ -312,21 +312,16 @@ const CampusNavigation: React.FC = () => {
         )}
       </div>
 
-      <button onClick={findShortestPaths} className='button'>
+      <button onClick={findShortestPaths} className='submit-button'>
         Find Shortest Path
       </button>
 
       {loading && <p>Loading...</p>}
-      {result.length > 0 && (
-        <div>
-          <h2>Results:</h2>
-          <ul>
-            {result.map((path, index) => (
-              <li key={index}>{path}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className='results'>
+        {result.map((path, index) => (
+          <p key={index}>{path}</p>
+        ))}
+      </div>
     </div>
   );
 };
