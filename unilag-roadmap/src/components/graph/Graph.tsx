@@ -266,7 +266,7 @@ const CampusNavigation: React.FC = () => {
         <label>
           Starting Location:
           <input
-            placeholder='Type in where are you now'
+            placeholder='Type in where you are now'
             type='text'
             value={start}
             onChange={handleStartChange}
