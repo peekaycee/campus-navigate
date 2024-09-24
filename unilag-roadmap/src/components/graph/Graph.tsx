@@ -6,17 +6,6 @@ type Graph = {
   [key: string]: { [key: string]: number };
 };
 
-// const graph: Graph = {
-//   'Front Gate': { 'Social Sciences': 2, 'Nithub': 3, 'Church': 5, 'Mosque': 4 },
-//   'Social Sciences': { 'Front Gate': 2, 'Science': 1, 'Art': 4, 'Nithub': 2 },
-//   'Nithub': { 'Front Gate': 3, 'Science': 2, 'Social Sciences': 2, 'Mosque': 3 },
-//   'Science': { 'Social Sciences': 1, 'Nithub': 2, 'Faculty of Education': 5, 'Art': 2 },
-//   'Art': { 'Social Sciences': 4, 'Faculty of Education': 3, 'Science': 2 },
-//   'Church': { 'Front Gate': 5, 'Mosque': 3, 'Faculty of Education': 6 },
-//   'Mosque': { 'Front Gate': 4, 'Nithub': 3, 'Church': 3, 'Faculty of Education': 5 },
-//   'Faculty of Education': { 'Science': 5, 'Art': 3, 'Church': 6, 'Mosque': 5 },
-// };
-
 const graph: Graph = {
   'First-Gate': {
     Education: 5,
@@ -211,7 +200,8 @@ const CampusNavigation: React.FC = () => {
   const [result, setResult] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [showStartDropdown, setShowStartDropdown] = useState<boolean>(false);
+  const [showEndDropdown, setShowEndDropdown] = useState<boolean>(false);
 
   // Load locations from localStorage when the component mounts
   useEffect(() => {
@@ -230,7 +220,8 @@ const CampusNavigation: React.FC = () => {
         location.toLowerCase().includes(value.toLowerCase())
       )
     );
-    setShowDropdown(true);
+    setShowStartDropdown(true);
+    setShowEndDropdown(false); // Hide end dropdown
   };
 
   const handleEndChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -242,19 +233,21 @@ const CampusNavigation: React.FC = () => {
         location.toLowerCase().includes(value.toLowerCase())
       )
     );
-    setShowDropdown(true);
+    setShowEndDropdown(true);
+    setShowStartDropdown(false); // Hide start dropdown
   };
 
   const selectLocation = (location: string, isStart: boolean) => {
     if (isStart) {
       setStart(location);
       localStorage.setItem('startLocation', location); // Save selected location
+      setShowStartDropdown(false);
     } else {
       setEnd(location);
       localStorage.setItem('endLocation', location); // Save selected location
+      setShowEndDropdown(false);
     }
     setFilteredLocations([]);
-    setShowDropdown(false);
   };
 
   const findShortestPaths = () => {
@@ -280,7 +273,7 @@ const CampusNavigation: React.FC = () => {
             className='input'
           />
         </label>
-        {showDropdown && filteredLocations.length > 0 && (
+        {showStartDropdown && filteredLocations.length > 0 && (
           <ul className='dropdown'>
             {filteredLocations.map((location, index) => (
               <li
@@ -298,14 +291,14 @@ const CampusNavigation: React.FC = () => {
         <label>
           Destination:
           <input
-            placeholder='Type in where you are going to'
+            placeholder='Where would you like to go?'
             type='text'
             value={end}
             onChange={handleEndChange}
             className='input'
           />
         </label>
-        {showDropdown && filteredLocations.length > 0 && (
+        {showEndDropdown && filteredLocations.length > 0 && (
           <ul className='dropdown'>
             {filteredLocations.map((location, index) => (
               <li
@@ -320,25 +313,20 @@ const CampusNavigation: React.FC = () => {
       </div>
 
       <button onClick={findShortestPaths} className='button'>
-        {loading ? 'Finding Paths...' : 'Find Shortest Path'}
+        Find Shortest Path
       </button>
 
-      <div>
-        {result.length > 0 ? (
-          <div>
-            <h2>Results:</h2>
-            <ul className='dropdown'>
-              {result.map((path, index) => (
-                <li key={index} className='result'>
-                  {path}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <p>No results to display. Enter locations to find paths!</p>
-        )}
-      </div>
+      {loading && <p>Loading...</p>}
+      {result.length > 0 && (
+        <div>
+          <h2>Results:</h2>
+          <ul>
+            {result.map((path, index) => (
+              <li key={index}>{path}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
