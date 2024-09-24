@@ -195,8 +195,8 @@ const printShortestPaths = (
 };
 
 const CampusNavigation: React.FC = () => {
-  const [start, setStart] = useState<string>('Front Gate');
-  const [end, setEnd] = useState<string>('Social Sciences');
+  const [start, setStart] = useState<string>('');
+  const [end, setEnd] = useState<string>('');
   const [result, setResult] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
