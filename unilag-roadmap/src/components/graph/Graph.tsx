@@ -18,124 +18,124 @@ type Graph = {
 // };
 
 const graph: Graph = {
-  'First-Gate': { 
-    'Education': 5 
+  'First-Gate': {
+    Education: 5,
   },
-  'Education': { 
-    'First-Gate': 5, 
-    'Elkanrmi': 4, 
-    'Environmental Science': 3 
+  Education: {
+    'First-Gate': 5,
+    Elkanrmi: 4,
+    'Environmental Science': 3,
   },
-  'Elkanrmi': { 
-    'Education': 4, 
-    'Femi Gbajabiamila Hostel': 2, 
-    'Kofo Hall': 3 
+  Elkanrmi: {
+    Education: 4,
+    'Femi Gbajabiamila Hostel': 2,
+    'Kofo Hall': 3,
   },
-  'Femi Gbajabiamila Hostel': { 
-    'Elkanrmi': 2 
+  'Femi Gbajabiamila Hostel': {
+    Elkanrmi: 2,
   },
-  'Kofo Hall': { 
-    'Elkanrmi': 3, 
-    'Queen Amina Hall': 2 
+  'Kofo Hall': {
+    Elkanrmi: 3,
+    'Queen Amina Hall': 2,
   },
-  'Queen Amina Hall': { 
-    'Kofo Hall': 2, 
-    'Biobaku Hostel': 2 
+  'Queen Amina Hall': {
+    'Kofo Hall': 2,
+    'Biobaku Hostel': 2,
   },
-  'Biobaku Hostel': { 
-    'Queen Amina Hall': 2, 
-    'Firstbank': 1 
+  'Biobaku Hostel': {
+    'Queen Amina Hall': 2,
+    Firstbank: 1,
   },
-  'Firstbank': { 
-    'Biobaku Hostel': 1, 
-    'Cross-Junction': 1 
+  Firstbank: {
+    'Biobaku Hostel': 1,
+    'Cross-Junction': 1,
   },
-  'Cross-Junction': { 
-    'Firstbank': 1, 
-    'Second-Gate': 4, 
-    'Medical Center': 2, 
-    'DLI': 2, 
-    'Iya Moria': 1, 
-    'Women Society': 1, 
-    'Honour\'s Hall': 2, 
-    'FSS Complex': 2 
+  'Cross-Junction': {
+    Firstbank: 1,
+    'Second-Gate': 4,
+    'Medical Center': 2,
+    DLI: 2,
+    'Iya Moria': 1,
+    'Women Society': 1,
+    "Honour's Hall": 2,
+    'FSS Complex': 2,
   },
-  'Second-Gate': { 
-    'Cross-Junction': 4, 
-    'Medical Center': 2 
+  'Second-Gate': {
+    'Cross-Junction': 4,
+    'Medical Center': 2,
   },
-  'Medical Center': { 
-    'Cross-Junction': 2, 
-    'Access Bank': 2 
+  'Medical Center': {
+    'Cross-Junction': 2,
+    'Access Bank': 2,
   },
-  'DLI': { 
-    'Cross-Junction': 2, 
-    'Iya Moria': 1 
+  DLI: {
+    'Cross-Junction': 2,
+    'Iya Moria': 1,
   },
-  'Iya Moria': { 
-    'DLI': 1, 
-    'Women Society': 1 
+  'Iya Moria': {
+    DLI: 1,
+    'Women Society': 1,
   },
-  'Women Society': { 
-    'Iya Moria': 1, 
-    'Honour\'s Hall': 2 
+  'Women Society': {
+    'Iya Moria': 1,
+    "Honour's Hall": 2,
   },
-  'Honour\'s Hall': { 
-    'Women Society': 2 
+  "Honour's Hall": {
+    'Women Society': 2,
   },
-  'FSS Complex': { 
-    'Cross-Junction': 2, 
-    'FSS': 1 
+  'FSS Complex': {
+    'Cross-Junction': 2,
+    FSS: 1,
   },
-  'FSS': { 
-    'FSS Complex': 1, 
-    'Nithub': 1 
+  FSS: {
+    'FSS Complex': 1,
+    Nithub: 1,
   },
-  'Nithub': { 
-    'FSS': 1, 
-    'Works': 1 
+  Nithub: {
+    FSS: 1,
+    Works: 1,
   },
-  'Works': { 
-    'Nithub': 1, 
-    'T-Junction': 2 
+  Works: {
+    Nithub: 1,
+    'T-Junction': 2,
   },
-  'Environmental Science': { 
-    'Education': 3, 
-    'Sport Center': 2 
+  'Environmental Science': {
+    Education: 3,
+    'Sport Center': 2,
   },
-  'Sport Center': { 
-    'Environmental Science': 2, 
-    'Church 1': 2 
+  'Sport Center': {
+    'Environmental Science': 2,
+    'Church 1': 2,
   },
-  'Church 1': { 
-    'Sport Center': 2, 
-    'Church 2': 1 
+  'Church 1': {
+    'Sport Center': 2,
+    'Church 2': 1,
   },
-  'Church 2': { 
-    'Church 1': 1, 
-    'Mosque': 1 
+  'Church 2': {
+    'Church 1': 1,
+    Mosque: 1,
   },
-  'Mosque': { 
-    'Church 2': 1, 
-    'Petro Station': 1 
+  Mosque: {
+    'Church 2': 1,
+    'Petro Station': 1,
   },
-  'Petro Station': { 
-    'Mosque': 1, 
-    'T-Junction': 2 
+  'Petro Station': {
+    Mosque: 1,
+    'T-Junction': 2,
   },
-  'T-Junction': { 
-    'Works': 2, 
-    'Petro Station': 2, 
-    'Access Bank': 2 
+  'T-Junction': {
+    Works: 2,
+    'Petro Station': 2,
+    'Access Bank': 2,
   },
-  'Access Bank': { 
-    'T-Junction': 2, 
-    'New Hall': 3 
+  'Access Bank': {
+    'T-Junction': 2,
+    'New Hall': 3,
   },
-  'New Hall': { 
-    'Access Bank': 3, 
-    'Medical Center': 4 
-  }
+  'New Hall': {
+    'Access Bank': 3,
+    'Medical Center': 4,
+  },
 };
 
 const locations = Object.keys(graph);
@@ -145,7 +145,7 @@ type Result = {
   previous: { [key: string]: string | null };
 };
 
-const dijkstra = (graph: Graph, start: string, _end: string): Result => {
+const graphModel = (graph: Graph, start: string, _end: string): Result => {
   const queue: [number, string][] = [];
   queue.push([0, start]);
 
@@ -183,7 +183,12 @@ const dijkstra = (graph: Graph, start: string, _end: string): Result => {
   return { distances, previous };
 };
 
-const printShortestPaths = (distances: { [key: string]: number }, previous: { [key: string]: string | null }, start: string, end: string) => {
+const printShortestPaths = (
+  distances: { [key: string]: number },
+  previous: { [key: string]: string | null },
+  start: string,
+  end: string
+) => {
   const paths: string[] = [];
   if (distances[end] < Infinity) {
     const path: string[] = [];
@@ -220,7 +225,11 @@ const CampusNavigation: React.FC = () => {
     const value = e.target.value;
     setStart(value);
     localStorage.setItem('startLocation', value); // Save to localStorage
-    setFilteredLocations(locations.filter(location => location.toLowerCase().includes(value.toLowerCase())));
+    setFilteredLocations(
+      locations.filter((location) =>
+        location.toLowerCase().includes(value.toLowerCase())
+      )
+    );
     setShowDropdown(true);
   };
 
@@ -228,7 +237,11 @@ const CampusNavigation: React.FC = () => {
     const value = e.target.value;
     setEnd(value);
     localStorage.setItem('endLocation', value); // Save to localStorage
-    setFilteredLocations(locations.filter(location => location.toLowerCase().includes(value.toLowerCase())));
+    setFilteredLocations(
+      locations.filter((location) =>
+        location.toLowerCase().includes(value.toLowerCase())
+      )
+    );
     setShowDropdown(true);
   };
 
@@ -246,32 +259,34 @@ const CampusNavigation: React.FC = () => {
 
   const findShortestPaths = () => {
     setLoading(true);
-    const { distances, previous } = dijkstra(graph, start, end);
+    const { distances, previous } = graphModel(graph, start, end);
     const paths = printShortestPaths(distances, previous, start, end);
     setResult(paths);
     setLoading(false);
   };
 
   return (
-    <div className="container">
-      <h1 className="header">Campus Navigation</h1>
-      
-      <div className="label">
+    <div className='container'>
+      <h1 className='header'>Campus Navigation</h1>
+
+      <div className='label'>
         <label>
           Starting Location:
           <input
-            type="text"
+            placeholder='Type in where are you now'
+            type='text'
             value={start}
             onChange={handleStartChange}
-            className="input"
+            className='input'
           />
         </label>
         {showDropdown && filteredLocations.length > 0 && (
-          <ul className="dropdown">
+          <ul className='dropdown'>
             {filteredLocations.map((location, index) => (
-              <li key={index} 
-                  onClick={() => selectLocation(location, true)} 
-                  className="dropdown-item">
+              <li
+                key={index}
+                onClick={() => selectLocation(location, true)}
+                className='dropdown-item'>
                 {location}
               </li>
             ))}
@@ -279,22 +294,24 @@ const CampusNavigation: React.FC = () => {
         )}
       </div>
 
-      <div className="label">
+      <div className='label'>
         <label>
           Destination:
           <input
-            type="text"
+            placeholder='Type in where you are going to'
+            type='text'
             value={end}
             onChange={handleEndChange}
-            className="input"
+            className='input'
           />
         </label>
         {showDropdown && filteredLocations.length > 0 && (
-          <ul className="dropdown">
+          <ul className='dropdown'>
             {filteredLocations.map((location, index) => (
-              <li key={index} 
-                  onClick={() => selectLocation(location, false)} 
-                  className="dropdown-item">
+              <li
+                key={index}
+                onClick={() => selectLocation(location, false)}
+                className='dropdown-item'>
                 {location}
               </li>
             ))}
@@ -302,20 +319,17 @@ const CampusNavigation: React.FC = () => {
         )}
       </div>
 
-      <button
-        onClick={findShortestPaths}
-        className="button"
-      >
+      <button onClick={findShortestPaths} className='button'>
         {loading ? 'Finding Paths...' : 'Find Shortest Path'}
       </button>
-      
+
       <div>
         {result.length > 0 ? (
           <div>
             <h2>Results:</h2>
-            <ul className="dropdown">
+            <ul className='dropdown'>
               {result.map((path, index) => (
-                <li key={index} className="result">
+                <li key={index} className='result'>
                   {path}
                 </li>
               ))}
