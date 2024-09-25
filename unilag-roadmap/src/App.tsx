@@ -4,7 +4,7 @@ import CampusNavigation from './components/graph/Graph';
 function App() {
   return (
     <>
-      <CampusNavigation/>
+      <CampusNavigation />
     </>
   );
 }

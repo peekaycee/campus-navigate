@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import './Graph.css';
@@ -127,6 +128,38 @@ const graph: Graph = {
   },
 };
 
+// Define coordinates for locations
+const locationCoordinates: { [key: string]: { x: number; y: number } } = {
+  'First-Gate': { x: 50, y: 50 },
+  Education: { x: 150, y: 150 },
+  Elkanrmi: { x: 200, y: 200 },
+  'Femi Gbajabiamila Hostel': { x: 250, y: 250 },
+  'Kofo Hall': { x: 300, y: 300 },
+  'Queen Amina Hall': { x: 350, y: 350 },
+  'Biobaku Hostel': { x: 400, y: 400 },
+  Firstbank: { x: 450, y: 450 },
+  'Cross-Junction': { x: 500, y: 500 },
+  'Second-Gate': { x: 550, y: 550 },
+  'Medical Center': { x: 600, y: 600 },
+  DLI: { x: 650, y: 650 },
+  'Iya Moria': { x: 700, y: 700 },
+  'Women Society': { x: 750, y: 750 },
+  "Honour's Hall": { x: 800, y: 800 },
+  'FSS Complex': { x: 850, y: 850 },
+  FSS: { x: 900, y: 900 },
+  Nithub: { x: 950, y: 950 },
+  Works: { x: 1000, y: 1000 },
+  'Environmental Science': { x: 1050, y: 1050 },
+  'Sport Center': { x: 1100, y: 1100 },
+  'Church 1': { x: 1150, y: 1150 },
+  'Church 2': { x: 1200, y: 1200 },
+  Mosque: { x: 1250, y: 1250 },
+  'Petro Station': { x: 1300, y: 1300 },
+  'T-Junction': { x: 1350, y: 1350 },
+  'Access Bank': { x: 1400, y: 1400 },
+  'New Hall': { x: 1450, y: 1450 },
+};
+
 const locations = Object.keys(graph);
 
 type Result = {
@@ -194,14 +227,46 @@ const printShortestPaths = (
   return paths;
 };
 
+// Visualization component for drawing lines
+const drawPaths = (previous: { [key: string]: string | null }, end: string) => {
+  let current: string | null = end;
+  const lines: JSX.Element[] = [];
+
+  while (current !== null) {
+    const prevLocation: any = previous[current];
+    if (prevLocation !== null) {
+      const start = locationCoordinates[prevLocation];
+      const finish = locationCoordinates[current];
+      if (start && finish) {
+        lines.push(
+          <line
+            x1={start.x}
+            y1={start.y}
+            x2={finish.x}
+            y2={finish.y}
+            stroke='blue'
+            strokeWidth={2}
+            key={current}
+          />
+        );
+      }
+    }
+    current = prevLocation;
+  }
+  return lines;
+};
+
 const CampusNavigation: React.FC = () => {
-  const [start, setStart] = useState<string>('Front Gate');
-  const [end, setEnd] = useState<string>('Social Sciences');
-  const [result, setResult] = useState<string[]>([]);
+  const [start, setStart] = useState<string>('Where you are now');
+  const [end, setEnd] = useState<string>('Where are you going to?');
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
   const [showStartDropdown, setShowStartDropdown] = useState<boolean>(false);
   const [showEndDropdown, setShowEndDropdown] = useState<boolean>(false);
+
+  // ====Include Path when needed ==========
+  const [path, setPath] = useState<string[]>([]);
+  const [lines, setLines] = useState<JSX.Element[]>([]);
 
   // Load locations from localStorage when the component mounts
   useEffect(() => {
@@ -254,75 +319,95 @@ const CampusNavigation: React.FC = () => {
     setLoading(true);
     const { distances, previous } = graphModel(graph, start, end);
     const paths = printShortestPaths(distances, previous, start, end);
-    setResult(paths);
+    const drawnPaths = drawPaths(previous, end);
+    setLines(drawnPaths);
+    setPath(paths);
     setLoading(false);
   };
 
   return (
-    <div className='container'>
-      <h1 className='header'>Campus Navigation</h1>
+    <section className='main-bg'>
+      <div className='container'>
+        <h1 className='header'>CampusNavigate</h1>
 
-      <div className='label'>
-        <label>
-          Starting Location:
+        <div className='label'>
+          <label htmlFor='start'>Starting Location:</label>
           <input
-            placeholder='Type in where are you now'
+            id='start'
             type='text'
             value={start}
             onChange={handleStartChange}
             className='input'
           />
-        </label>
-        {showStartDropdown && filteredLocations.length > 0 && (
-          <ul className='dropdown'>
-            {filteredLocations.map((location, index) => (
-              <li
-                key={index}
-                onClick={() => selectLocation(location, true)}
-                className='dropdown-item'>
-                {location}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+          {showStartDropdown && filteredLocations.length > 0 && (
+            <ul className='dropdown'>
+              {filteredLocations.map((location, index) => (
+                <li
+                  key={index}
+                  onClick={() => selectLocation(location, true)}
+                  className='dropdown-item'>
+                  {location}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <div className='label'>
-        <label>
-          Destination:
+        <div className='label'>
+          <label htmlFor='end'> Destination:</label>
           <input
-            placeholder='Where would you like to go?'
+            id='end'
             type='text'
             value={end}
             onChange={handleEndChange}
             className='input'
           />
-        </label>
-        {showEndDropdown && filteredLocations.length > 0 && (
-          <ul className='dropdown'>
-            {filteredLocations.map((location, index) => (
-              <li
-                key={index}
-                onClick={() => selectLocation(location, false)}
-                className='dropdown-item'>
-                {location}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+          {showEndDropdown && filteredLocations.length > 0 && (
+            <ul className='dropdown'>
+              {filteredLocations.map((location, index) => (
+                <li
+                  key={index}
+                  onClick={() => selectLocation(location, false)}
+                  className='dropdown-item'>
+                  {location}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <button onClick={findShortestPaths} className='submit-button'>
-        Find Shortest Path
-      </button>
+        <button onClick={findShortestPaths} className='submit-button'>
+          Find Shortest Path
+        </button>
 
-      {loading && <p>Loading...</p>}
-      <div className='results'>
-        {result.map((path, index) => (
+        {/* Result List */}
+        {loading && <p>Loading...</p>}
+        {/* <div className='results'>
+        {path.map((path, index) => (
           <p key={index}>{path}</p>
         ))}
+      </div> */}
       </div>
-    </div>
+      <div className='svg'>
+        <svg width='100%' height='600'>
+          {Object.keys(locationCoordinates).map((location) => {
+            const { x, y } = locationCoordinates[location];
+            return (
+              <circle
+                key={location}
+                cx={x}
+                cy={y}
+                r={5}
+                fill='red'
+                stroke='dodgerblue'
+                strokeWidth={1}
+              />
+            );
+          })}
+          {lines}
+        </svg>
+      </div>
+    </section>
   );
 };
 
