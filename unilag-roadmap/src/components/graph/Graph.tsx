@@ -382,11 +382,11 @@ const CampusNavigation: React.FC = () => {
 
         {/* Result List */}
         {loading && <p>Loading...</p>}
-        {/* <div className='results'>
+        <div className='results'>
         {path.map((path, index) => (
           <p key={index}>{path}</p>
         ))}
-      </div> */}
+      </div>
       </div>
       <div className='svg'>
         <svg width='100%' height='600'>
