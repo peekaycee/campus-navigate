@@ -32,7 +32,7 @@ const CampusNavigation: React.FC = () => {
     setPath([]);
     setLines([]);
     setErrorMessage(null);
-    setInfo(''); 
+    setInfo('');
     localStorage.removeItem('startLocation');
     localStorage.removeItem('endLocation');
   };
@@ -42,6 +42,21 @@ const CampusNavigation: React.FC = () => {
     const savedEnd = localStorage.getItem('endLocation');
     if (savedStart) setStart(savedStart);
     if (savedEnd) setEnd(savedEnd);
+  }, []);
+
+  // Listen for changes to the URL to handle direct navigation
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const savedStart = localStorage.getItem('startLocation');
+      const savedEnd = localStorage.getItem('endLocation');
+      if (savedStart) setStart(savedStart);
+      if (savedEnd) setEnd(savedEnd);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+    };
   }, []);
 
   const handleStartChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

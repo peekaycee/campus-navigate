@@ -8,12 +8,13 @@ const App: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route index path='/' element={<Homepage />}/>
-        <Route  path='/graph' element={<CampusNavigation />}/>
-        <Route  path='*' element={'Page doesn\'t exist'}/>
+        <Route index path='/' element={<Homepage />} />
+        <Route path='/graph' element={<CampusNavigation />} />
+        <Route path='*' element={'Page doesn\'t exist'} />
       </Routes>
     </>
   );
-}
+};
+
 
 export default App;
