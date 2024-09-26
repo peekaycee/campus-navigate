@@ -25,18 +25,6 @@ const CampusNavigation: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [info, setInfo] = useState('');
 
-  // Function to reset all states without reloading the page
-  const handleRefresh = () => {
-    setStart('');
-    setEnd('');
-    setPath([]);
-    setLines([]);
-    setErrorMessage(null);
-    setInfo('');
-    localStorage.removeItem('startLocation');
-    localStorage.removeItem('endLocation');
-  };
-
   useEffect(() => {
     const savedStart = localStorage.getItem('startLocation');
     const savedEnd = localStorage.getItem('endLocation');
@@ -98,7 +86,7 @@ const CampusNavigation: React.FC = () => {
 
   return (
     <main>
-      <Header onRefresh={handleRefresh} />
+      <Header />
       <section className='main-bg'>
         <div className='container'>
           <div className='users-input'>
