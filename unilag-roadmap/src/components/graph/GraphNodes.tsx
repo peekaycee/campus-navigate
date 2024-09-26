@@ -112,7 +112,7 @@ const graph: Graph = {
   },
   'J.F Ade Ajayi Auditorium': {
     Library: 1,
-    'Law-Junction': 1, 
+    'Law-Junction': 1,
   },
   'King Jaja Hall': {
     'Zenith Bank': 1,
@@ -126,15 +126,15 @@ const graph: Graph = {
     Library: 1,
   },
   'Law-Junction': {
-    'Senate Building': 1, 
-    Library: 1, 
-    'J.F Ade Ajayi Auditorium': 1, 
+    'Senate Building': 1,
+    Library: 1,
+    'J.F Ade Ajayi Auditorium': 1,
     'Faculty of Law': 1,
   },
   Library: {
     'J.F Ade Ajayi Auditorium': 1,
     'Lagoon Front': 1,
-    'Law-Junction': 1, // Added link from Law-Junction to Library northward
+    'Law-Junction': 1,
   },
   'L-Junction': {
     'Faculty of Science': 1,

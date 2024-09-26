@@ -17,12 +17,20 @@
   padding: 1.5em;
   background-color: green;
   border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-
-.header {
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.map-header {
   text-align: center;
   color: #ebebeb;
   font-size: 1.5vw;
+  margin-bottom: 0.5em;
+  padding: 1em;
 }
 
 .label {
@@ -81,6 +89,7 @@ button.submit-button:hover {
   height: 165dvh;
   width: 100%;
   flex: 1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .svg svg {
@@ -90,11 +99,38 @@ button.submit-button:hover {
   height: 100%;
 }
 
-.result {
+.results {
+  width: 70%;
+  max-width: 650px;
+  margin: 2em auto;
+  height: auto;
+  padding: 0.5em 1.5em;
+  background-color: green;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.results  p{
+  color: #ebebeb;
+  font-size: 1.3vw;
+  letter-spacing: 1px;
+  line-height: 1.2em;
+}
+
+.info {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  height: auto;
   background-color: #f9f9f9;
-  margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
+}
+p.info {
+  text-align: center;
+  color: #333;
+}
+.info#hide {
+  display: none;
 }
 
 /* Responsive Breakpoints */

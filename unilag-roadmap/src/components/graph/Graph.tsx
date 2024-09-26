@@ -4,7 +4,9 @@ import graph from './GraphNodes';
 import graphModel from './GraphModel';
 import locationCoordinates from './Cordinates';
 import { printShortestPaths, drawPaths } from './Paths';
+import Footer from '../Footer/Footer';
 import { FaMapMarkerAlt, FaHome } from 'react-icons/fa';
+import Header from '../Header/Header';
 
 const locations = Object.keys(graph);
 
@@ -15,12 +17,18 @@ const getRandomColor = () => {
 };
 
 const CampusNavigation: React.FC = () => {
+  const [refreshKey, setRefreshKey] = useState(0); // Manage the refresh state in this parent component
   const [start, setStart] = useState<string>('');
   const [end, setEnd] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [path, setPath] = useState<string[]>([]);
   const [lines, setLines] = useState<JSX.Element[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [info, setInfo] = useState('');
+
+  const handleRefresh = () => {
+    setRefreshKey((prevKey) => prevKey + 1); // Update the refresh key to trigger re-render
+  };
 
   useEffect(() => {
     const savedStart = localStorage.getItem('startLocation');
@@ -42,6 +50,7 @@ const CampusNavigation: React.FC = () => {
   };
 
   const findShortestPaths = () => {
+    setInfo('hide');
     if (!graph[start] || !graph[end]) {
       setErrorMessage('Invalid start or end location.');
       return;
@@ -66,107 +75,105 @@ const CampusNavigation: React.FC = () => {
   };
 
   return (
-    <section className='main-bg'>
-      <div className='container'>
-        <div className='users-input'>
-          <h1 className='header'>CampusNavigate</h1>
+    <main key={refreshKey}>
+      <Header onRefresh={handleRefresh} />
+      <section className='main-bg'>
+        <div className='container'>
+          <div className='users-input'>
+            <div className='head'>
+              <h1 className='map-header'>CampusNavigate</h1>
+            </div>
+            <div className='label'>
+              <label htmlFor='start'>Starting Location:</label>
+              <select
+                id='start'
+                value={start}
+                onChange={handleStartChange}
+                className='input'>
+                <option value=''>Select your starting location</option>
+                {locations.map((location) => (
+                  <option key={location} value={location}>
+                    {location}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className='label'>
-            <label htmlFor='start'>Starting Location:</label>
-            <select
-              id='start'
-              value={start}
-              onChange={handleStartChange}
-              className='input'
-            >
-              <option value=''>Select your starting location</option>
-              {locations.map((location) => (
-                <option key={location} value={location}>
-                  {location}
-                </option>
-              ))}
-            </select>
+            <div className='label'>
+              <label htmlFor='end'>Destination:</label>
+              <select
+                id='end'
+                value={end}
+                onChange={handleEndChange}
+                className='input'>
+                <option value=''>Select your destination</option>
+                {locations.map((location) => (
+                  <option key={location} value={location}>
+                    {location}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button onClick={findShortestPaths} className='submit-button'>
+              Find Shortest Path
+            </button>
           </div>
+        </div>
 
-          <div className='label'>
-            <label htmlFor='end'>Destination:</label>
-            <select
-              id='end'
-              value={end}
-              onChange={handleEndChange}
-              className='input'
-            >
-              <option value=''>Select your destination</option>
-              {locations.map((location) => (
-                <option key={location} value={location}>
-                  {location}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <button onClick={findShortestPaths} className='submit-button'>
-            Find Shortest Path
-          </button>
-
+        {/* SVG map rendering */}
+        <div className='svg'>
+          <svg width='100%' height='600' viewBox={'0 0 1000 600'}>
+            {Object.keys(locationCoordinates).map((location) => {
+              const { x, y } = locationCoordinates[location];
+              const randomColor = getRandomColor();
+              return (
+                <React.Fragment key={location}>
+                  {(location === start || location === end) && (
+                    <foreignObject x={x - 10} y={y - 35} width={30} height={30}>
+                      <FaMapMarkerAlt
+                        style={{
+                          color: location === start ? 'blue' : 'green',
+                          fontSize: '1px',
+                        }}
+                      />
+                    </foreignObject>
+                  )}
+                  <circle cx={x} cy={y} r={0} />
+                  <foreignObject x={x - 7} y={y - 7} width={30} height={30}>
+                    <FaHome style={{ fontSize: '8px', color: randomColor }} />
+                  </foreignObject>
+                  <text x={x - 18} y={y + 18} fontSize='12' fill='black'>
+                    {location}
+                  </text>
+                </React.Fragment>
+              );
+            })}
+            {lines} {/* Paths between locations */}
+          </svg>
+        </div>
+      </section>
+      <section className='message'>
+        <div className='results'>
+          <p className='info' id={info}>
+            See path to follow in text format
+          </p>
           {loading && <p>Loading...</p>}
           {errorMessage && <p className='error'>{errorMessage}</p>}
           {path.length > 0 && (
             <div className='results'>
+              <p>
+                <strong>Shortest Path:</strong>
+              </p>
               {path.map((pathSegment, index) => (
                 <p key={index}>{pathSegment}</p>
               ))}
             </div>
           )}
         </div>
-      </div>
-
-      {/* SVG map rendering */}
-      <div className='svg'>
-        <svg width='100%' height='600' viewBox={'0 0 1000 600'}>
-          {Object.keys(locationCoordinates).map((location) => {
-            const { x, y } = locationCoordinates[location];
-            const randomColor = getRandomColor(); // Get a random color for each location
-            return (
-              <React.Fragment key={location}>
-                {/* Render dynamic location icons */}
-                {(location === start || location === end) && (
-                  <foreignObject x={x - 10} y={y - 35} width={30} height={30}>
-                    <FaMapMarkerAlt
-                      style={{
-                        color: location === start ? 'blue' : 'green',
-                        fontSize: '1px',
-                      }}
-                    />
-                  </foreignObject>
-                )}
-
-                {/* Render circle for location */}
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={0}
-                  // fill='red'
-                  // stroke='yellow'
-                  // strokeWidth={1}
-                />
-
-                {/* Render house icon with random color for each location */}
-                <foreignObject x={x - 7} y={y - 7} width={30} height={30}>
-                  <FaHome style={{ fontSize: '8px', color: randomColor }} />
-                </foreignObject>
-
-                {/* Render text beside the circle */}
-                <text x={x - 18} y={y + 18} fontSize='12' fill='black'>
-                  {location}
-                </text>
-              </React.Fragment>
-            );
-          })}
-          {lines} {/* Paths between locations */}
-        </svg>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </main>
   );
 };
 

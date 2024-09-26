@@ -16,7 +16,7 @@ export const printShortestPaths = (
       current = previous[current];
     }
     path.reverse();
-    paths.push(`To ${end}: ${distances[end]} (Path: ${path.join(' -> ')})`);
+    paths.push(`To ${end}: ${distances[end]} (Path: ${path.join(' >>> ')})`);
   } else {
     paths.push(`No path found from ${start} to ${end}.`);
   }
