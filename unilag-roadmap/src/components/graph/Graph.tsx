@@ -17,7 +17,6 @@ const getRandomColor = () => {
 };
 
 const CampusNavigation: React.FC = () => {
-  const [refreshKey, setRefreshKey] = useState(0); // Manage the refresh state in this parent component
   const [start, setStart] = useState<string>('');
   const [end, setEnd] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -75,7 +74,7 @@ const CampusNavigation: React.FC = () => {
   };
 
   return (
-    <main key={refreshKey}>
+    <main>
       <Header onRefresh={handleRefresh} />
       <section className='main-bg'>
         <div className='container'>
