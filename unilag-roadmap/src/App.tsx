@@ -1,19 +1,17 @@
 import './App.css';
-// import Footer from './components/Footer/Footer';
 import CampusNavigation from './components/graph/Graph';
-import { BrowserRouter, Routes, Route    } from 'react-router-dom';
+import { Routes, Route    } from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
+import React from 'react';
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
-    <BrowserRouter>
       <Routes>
         <Route index path='/' element={<Homepage />}/>
         <Route  path='/graph' element={<CampusNavigation />}/>
+        <Route  path='*' element={'Page doesn\'t exist'}/>
       </Routes>
-    </BrowserRouter>
-      {/* <Footer/> */}
     </>
   );
 }
