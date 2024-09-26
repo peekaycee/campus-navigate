@@ -180,7 +180,19 @@ p.info {
 
 /* Mobile Screens (up to 480px) */
 @media only screen and (max-width: 480px) {
+  .container {
+    padding: 2em 1em;
+  }
   .svg {
-    height: 55dvh;
+    height: 65dvh;
+  }
+  .results {
+    width: 90%;
+  }
+  .results strong {
+    font-size: 11px;
+  }
+  .results p:nth-child(2) {
+    font-size: 14px;
   }
 }
