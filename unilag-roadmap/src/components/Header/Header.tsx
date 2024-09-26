@@ -3,11 +3,11 @@ import { FaHome } from 'react-icons/fa';
 import { FiRefreshCw } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
-  const handleRefresh = () => {
-    window.location.reload();
-  };
+interface HeaderProps {
+  onRefresh: () => void; 
+}
 
+const Header: React.FC<HeaderProps> = ({ onRefresh }) => {
   return (
     <section className='header'>
       <Link to='/'>
@@ -16,7 +16,7 @@ const Header = () => {
       <FiRefreshCw
         style={{ fontSize: '30px', color: '#fff' }}
         className='refresh'
-        onClick={handleRefresh}
+        onClick={onRefresh}
       />
     </section>
   );

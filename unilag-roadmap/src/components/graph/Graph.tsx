@@ -27,7 +27,7 @@ const CampusNavigation: React.FC = () => {
   const [info, setInfo] = useState('');
 
   const handleRefresh = () => {
-    setRefreshKey((prevKey) => prevKey + 1); // Update the refresh key to trigger re-render
+    window.location.reload();
   };
 
   useEffect(() => {

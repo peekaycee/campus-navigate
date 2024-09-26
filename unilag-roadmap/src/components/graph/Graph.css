@@ -19,7 +19,7 @@
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.head{
+.head {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,7 +109,7 @@ button.submit-button:hover {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.results  p{
+.results p {
   color: #ebebeb;
   font-size: 1.3vw;
   letter-spacing: 1px;
@@ -153,7 +153,10 @@ p.info {
   .header {
     font-size: 1.4rem;
   }
-  .svg{
+  .map-header {
+    font-size: 1.2rem;
+  }
+  .svg {
     height: 150dvh;
   }
 }
@@ -167,7 +170,9 @@ p.info {
   .header {
     font-size: 1.3rem;
   }
-
+  .map-header {
+    font-size: 1rem;
+  }
   .svg {
     height: 120dvh;
   }
@@ -178,4 +183,4 @@ p.info {
   .svg {
     height: 55dvh;
   }
-} 
+}
