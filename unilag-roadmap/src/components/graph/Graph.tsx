@@ -4,9 +4,15 @@ import graph from './GraphNodes';
 import graphModel from './GraphModel';
 import locationCoordinates from './Cordinates';
 import { printShortestPaths, drawPaths } from './Paths';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaHome } from 'react-icons/fa';
 
 const locations = Object.keys(graph);
+
+// Function to generate random colors
+const getRandomColor = () => {
+  const colors = ['red', 'blue', 'green'];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 
 const CampusNavigation: React.FC = () => {
   const [start, setStart] = useState<string>('');
@@ -120,6 +126,7 @@ const CampusNavigation: React.FC = () => {
         <svg width='100%' height='600' viewBox={'0 0 1000 600'}>
           {Object.keys(locationCoordinates).map((location) => {
             const { x, y } = locationCoordinates[location];
+            const randomColor = getRandomColor(); // Get a random color for each location
             return (
               <React.Fragment key={location}>
                 {/* Render dynamic location icons */}
@@ -138,14 +145,19 @@ const CampusNavigation: React.FC = () => {
                 <circle
                   cx={x}
                   cy={y}
-                  r={4}
-                  fill='red'
-                  stroke='dodgerblue'
-                  strokeWidth={1}
+                  r={0}
+                  // fill='red'
+                  // stroke='yellow'
+                  // strokeWidth={1}
                 />
 
+                {/* Render house icon with random color for each location */}
+                <foreignObject x={x - 7} y={y - 7} width={30} height={30}>
+                  <FaHome style={{ fontSize: '8px', color: randomColor }} />
+                </foreignObject>
+
                 {/* Render text beside the circle */}
-                <text x={x - 18} y={y + 15} fontSize='12' fill='black'>
+                <text x={x - 18} y={y + 18} fontSize='12' fill='black'>
                   {location}
                 </text>
               </React.Fragment>
