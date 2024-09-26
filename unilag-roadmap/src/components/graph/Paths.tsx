@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import locationCoordinates from './Cordinates';
 
 export const printShortestPaths = (
@@ -27,7 +28,7 @@ export const drawPaths = (previous: { [key: string]: string | null }, end: strin
   const lines: JSX.Element[] = [];
 
   while (current !== null) {
-    const _prevLocation: any = previous[current];
+    const _prevLocation:any = previous[current];
     if (_prevLocation !== null) {
       const start = locationCoordinates[_prevLocation];
       const finish = locationCoordinates[current];
