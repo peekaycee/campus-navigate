@@ -1,6 +1,6 @@
 import './App.css';
 import CampusNavigation from './components/graph/Graph';
-import { Routes, Route    } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
 import React from 'react';
 
@@ -15,6 +15,5 @@ const App: React.FC = () => {
     </>
   );
 };
-
 
 export default App;

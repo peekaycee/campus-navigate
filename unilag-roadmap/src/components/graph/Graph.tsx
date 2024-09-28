@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './Graph.css';
 import graph from './GraphNodes';
 import graphModel from './GraphModel';
@@ -86,7 +86,16 @@ const CampusNavigation: React.FC = () => {
 
   return (
     <main>
-      <Header />
+      <Header onRefresh={() => {
+        setStart('');
+        setEnd('');
+        setPath([]);
+        setLines([]);
+        setErrorMessage(null);
+        setInfo('');
+        localStorage.removeItem('startLocation');
+        localStorage.removeItem('endLocation');
+      }} />
       <section className='main-bg'>
         <div className='container'>
           <div className='users-input'>
