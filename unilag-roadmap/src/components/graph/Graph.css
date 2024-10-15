@@ -159,6 +159,12 @@ p.info {
   .svg {
     height: 150dvh;
   }
+  .svg svg{
+    padding: 0 1.5em 1em 1em;
+  }
+  p.info{
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {
