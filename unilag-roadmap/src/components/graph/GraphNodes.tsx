@@ -13,7 +13,7 @@ const graph: Graph = {
   },
   'Car Park': {
     Moremi: 1,
-    'Erastus Akingbola PostGraduate Hall': 1,
+    'Eratus A. PGD Hall': 1,
     'J.F Ade Ajayi Auditorium (link)': 1,
   },
   CITS: {
@@ -29,7 +29,7 @@ const graph: Graph = {
     'Church 1': 1,
     Mosque: 1,
   },
-  'Cross-Junction': {
+  'Junction': {
     Firstbank: 1,
     'Second-Gate': 4,
     'Medical Center': 2,
@@ -40,7 +40,7 @@ const graph: Graph = {
     'FSS Complex': 2,
   },
   DLI: {
-    'Cross-Junction': 2,
+    'Junction': 2,
     'Iya Moria': 1,
   },
   Ecobank: {
@@ -50,7 +50,7 @@ const graph: Graph = {
   Education: {
     'First-Gate': 5,
     Elkanrmi: 4,
-    'Faculty of Environmental Science': 3,
+    'Faculty of Mgt Sci.': 3,
     'Wema Bank': 2,
   },
   Elkanrmi: {
@@ -58,7 +58,7 @@ const graph: Graph = {
     'Femi Gbajabiamila Hostel': 2,
     'Kofo Hall': 3,
   },
-  'Erastus Akingbola PostGraduate Hall': {
+  'Eratus A. PGD Hall': {
     'Car Park': 1,
     GTBank: 1,
   },
@@ -66,7 +66,7 @@ const graph: Graph = {
     'Y-Junction': 2,
     'Love Garden': 1,
   },
-  'Faculty of Environmental Science': {
+  'Faculty of Mgt Sci.': {
     Education: 3,
     'Sport Center': 2,
   },
@@ -86,7 +86,7 @@ const graph: Graph = {
   },
   Firstbank: {
     'Biobaku Hostel': 1,
-    'Cross-Junction': 1,
+    'Junction': 1,
   },
   'First-Gate': {
     Education: 5,
@@ -96,11 +96,11 @@ const graph: Graph = {
     Nithub: 1,
   },
   'FSS Complex': {
-    'Cross-Junction': 2,
+    'Junction': 2,
     FSS: 1,
   },
   GTBank: {
-    'Erastus Akingbola PostGraduate Hall': 1,
+    'Eratus A. PGD Hall': 1,
     'Zenith Bank': 1,
   },
   "Honour's Hall": {
@@ -150,7 +150,7 @@ const graph: Graph = {
     Moremi: 1,
   },
   'Medical Center': {
-    'Cross-Junction': 2,
+    'Junction': 2,
     'L-Junction': 2,
   },
   Moremi: {
@@ -178,7 +178,7 @@ const graph: Graph = {
     'Biobaku Hostel': 2,
   },
   'Second-Gate': {
-    'Cross-Junction': 4,
+    'Junction': 4,
     'Medical Center': 2,
   },
   'Senate Building': {
@@ -186,7 +186,7 @@ const graph: Graph = {
     'Law-Junction': 1,
   },
   'Sport Center': {
-    'Faculty of Environmental Science': 2,
+    'Faculty of Mgt Sci.': 2,
     'Wema Bank': 3,
     'Church 1': 2,
   },
