@@ -12,12 +12,13 @@
     margin-bottom: 0.5em;
     font-size: 2.5rem;
     font-weight: bold;
-    color: rgb(1, 17, 4);
+    color: rgb(15, 177, 50);
+    
 }
 
 .not-found p{
     font-size: 1.2rem;
-    color: rgb(18, 208, 59);
+    color: rgb(2, 32, 8);
 }
 
 @media only screen and (max-width: 768px) {
