@@ -13,8 +13,8 @@ const graph: Graph = {
   },
   'Car Park': {
     Moremi: 1,
-    'Erastus A. PGD Hall': 1,
-    'J.F Ade Ajayi Auditorium (link)': 1,
+    '.': 1,
+    // 'J.F Ade Ajayi Auditorium (link)': 1,
   },
   CITS: {
     'New Hall': 2,
@@ -48,25 +48,30 @@ const graph: Graph = {
     'Mass Comm': 1,
   },
   Education: {
-    'Elkanrmi Junction': 1,
+    'Elkanrmi Junction': 3,
     'First-Gate': 5,
     Elkanrmi: 4,
-    'Faculty of Environmental Science': 3,
+    'Faculty of Environmental Science': 1,
     'Wema Bank': 2,
   },
   'Elkanrmi Junction': {
-    Elkanrmi: 5,
-    Education: 1,
+    Elkanrmi: 1,
+    Education: 3,
     'Kofo Hall': 4,
   },
   Elkanrmi: {
-    'Elkanrmi Junction': 5,
+    'Elkanrmi Junction': 1,
     Education: 4,
     'Femi Gbajabiamila Hostel': 2,
-    'Kofo Hall': 3,
+  },
+  '.': {
+    'Erastus A. PGD Hall': 2,
+    'Car Park': 1,
+    'J.F Ade Ajayi Auditorium': 3,
   },
   'Erastus A. PGD Hall': {
-    'Car Park': 1,
+    'Zenith Bank': 1,
+    '.' : 2,
     GTBank: 1,
   },
   'Faculty of Art': {
@@ -74,8 +79,8 @@ const graph: Graph = {
     'Love Garden': 1,
   },
   'Faculty of Environmental Science': {
-    Education: 3,
-    'Sport Center': 2,
+    Education: 1,
+    'Wema Bank': 2,
   },
   'Faculty of Law': {
     'Law-Junction': 1,
@@ -85,7 +90,7 @@ const graph: Graph = {
     'Faculty of Law': 1,
   },
   'Faculty of Science': {
-    'King Jaja Hall': 1,
+    'King Jaja Hall': 2,
     'L-Junction': 1,
   },
   'Femi Gbajabiamila Hostel': {
@@ -107,8 +112,8 @@ const graph: Graph = {
     FSS: 1,
   },
   GTBank: {
-    'Erastus A. PGD Hall': 1,
-    'Zenith Bank': 1,
+    'King Jaja Hall': 1,
+    'Zenith Bank': 2,
   },
   "Honour's Hall": {
     'Women Society': 2,
@@ -120,10 +125,11 @@ const graph: Graph = {
   'J.F Ade Ajayi Auditorium': {
     Library: 1,
     'Law-Junction': 1,
+    '.': 3,
   },
   'King Jaja Hall': {
-    'Zenith Bank': 1,
-    'Faculty of Science': 1,
+    'GTBank': 1,
+    'Faculty of Science': 2,
   },
   'Kofo Hall': {
     'Elkanrmi Junction': 4,
@@ -193,8 +199,7 @@ const graph: Graph = {
     'Law-Junction': 1,
   },
   'Sport Center': {
-    'Faculty of Environmental Science': 2,
-    'Wema Bank': 3,
+    'Wema Bank': 1,
     'Church 1': 2,
   },
   'T-Junction': {
@@ -203,8 +208,8 @@ const graph: Graph = {
     'Access Bank': 2,
   },
   'Wema Bank': {
-    Education: 2,
-    'Sport Center': 3,
+    'Faculty of Environmental Science': 2,
+    'Sport Center': 1,
   },
   'Women Society': {
     'Iya Moria': 1,
@@ -221,8 +226,8 @@ const graph: Graph = {
     'Faculty of Art': 2,
   },
   'Zenith Bank': {
-    GTBank: 1,
-    'King Jaja Hall': 1,
+    GTBank: 2,
+    'Erastus A. PGD Hall': 1,
   },
 };
 
