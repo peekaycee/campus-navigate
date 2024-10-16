@@ -23,7 +23,7 @@ const locationCoordinates: { [key: string]: { x: number; y: number; location?: s
   'Faculty of Science': { x: 820, y: 122 },
   'King Jaja Hall': { x: 733, y: 122 },
   'Zenith Bank': { x: 598, y: 122 },
-  'Eratus A. PGD Hall': { x: 486, y: 122 },
+  'Erastus A. PGD Hall': { x: 486, y: 122 },
   GTBank : { x: 673, y: 122 },
   'J.F Ade Ajayi Auditorium': { x: 393, y: -125 },
   'Faculty of Art': { x: 146, y: 25 },
@@ -39,8 +39,9 @@ const locationCoordinates: { [key: string]: { x: number; y: number; location?: s
   'Biobaku Hostel': { x: 660, y: 545 },
   'Queen Amina Hall': { x: 660, y: 600 },
   'Kofo Hall': { x: 660, y: 653 },
-  Elkanrmi: { x: 733, y: 722 },
-  'Femi Gbajabiamila Hostel': { x: 801, y: 780 },
+  'Elkanrmi Junction': { x:660, y: 723},
+  Elkanrmi: { x: 793, y: 722 },
+  'Femi Gbajabiamila Hostel': { x: 851, y: 780 },
   'Junction': { x: 660, y: 395 },
   DLI: { x: 730, y: 395 },
   'Iya Moria': { x: 785, y: 395 },
@@ -49,7 +50,7 @@ const locationCoordinates: { [key: string]: { x: number; y: number; location?: s
   'FSS Complex': { x: 570, y: 395 },
   FSS: { x: 520, y: 395 },
   Nithub: { x: 450, y: 395 },
-  Works: { x: 395, y: 395 },
+  Works: { x: 345, y: 395 },
 };
 
 export default locationCoordinates;
